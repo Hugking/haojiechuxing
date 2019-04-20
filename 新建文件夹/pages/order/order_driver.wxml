@@ -1,0 +1,43 @@
+<!--pages/order/order_driver.wxml-->
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-blue cur':''}}" wx:for="{{3}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+      {{tablistp[index]}}
+    </view>
+  </view>
+</scroll-view>
+
+<view wx:for="{{orderlist}}" wx:key>
+  <view class="margin-xs radius bg-white cf" data-name="{{item.confirm_isget}}" data-pay="{{item.pay_status}}">
+    <view class='shownav' bindtap='go_detail' id='{{item.id}}' data-idx="{{index}}">
+      <view class='padding-xs fl cf  flex align-center'>
+        <view class='fl margin-sm'>
+          <text class="icon-form text-xl text-{{cancel&&!isgo?'gray':'blue'}}"></text>
+        </view>
+        <view class='fr margin-sm'>
+          <view class='action  padding-top-xs'>
+            <text class="icon-title text-{{cancel&&!isgo?'gray':'blue'}}"></text>
+            <text class="text-{{cancel&&!isgo?'gray':'black'}} text-bold text-sm">{{item.startname}}-{{item.endname}}</text>
+          </view>
+          <view class='action padding-top-xs'>
+            <text class='icon-title text-gray text-sm'>产品类型：{{item.type=='pre'?'预约':''}}</text>
+          </view>
+          <view class='action padding-top-xs'>
+            <text class='icon-title text-gray text-sm'>出行时间：{{item.time}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='padding-right-sm padding-top-xs padding-bottom-xs fr'>
+        <view class='action padding-top-sm' wx:if="{{!item.completion}}">
+          <text class="{{!item.completion&&item.isget&&!item.confirm_isget&&!item.in_car&&!item.cancel?'text-red':''}}{{!item.completion&&!item.cancel&&item.isget&&item.confirm_isget&&!item.in_car?'text-blue':''}}{{!item.completion&&!item.cancel&&item.isget&&item.confirm_isget&&item.in_car?'text-green':''}} text-blod">{{!item.completion&&!item.cancel&&item.isget&&!item.confirm_isget&&!item.in_car?'已抢单':''}}{{!item.completion&&!item.cancel&&item.isget&&item.confirm_isget&&!item.in_car?'已接单':''}}{{!item.completion&&!item.cancel&&item.isget&&item.confirm_isget&&item.in_car?'进行中':''}}{{!item.completion&&item.cancel?'已取消':''}}</text>
+        </view>
+        <view class='action padding-top-sm' wx:if="{{item.completion}}">
+          <text class="text{{item.completion&&item.settle?'-blue':''}} text{{item.completion&&!item.settle?'-red':''}} text-blod">{{item.completion&&item.settle?'已结算':''}}{{item.completion&&!item.settle?'未结算':''}}</text>
+        </view>
+        <view class='action padding-top-xs'>
+          <text class="text-price text-blod text-{{item.cancel&&!item.pay-status?'gray':'black'}} ">{{item.cost}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

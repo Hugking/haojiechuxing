@@ -1,0 +1,89 @@
+<!--pages/menu/mytrip/mytrip.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <view class='action' bindtap='backdriver'  wx:if="{{role=='Driver'}}">
+      <text class='icon-back '></text>返回
+    </view>
+    <view class='action' bindtap='backpassenger' wx:if="{{role=='Passenger'}}">
+      <text class='icon-back '></text>返回
+    </view>
+    <view class='content' style='top:{{StatusBar}}px;'>我的行程</view>
+    <view class="content cu-load load-icon {{!isLoad?'loading':'over'}}" style='margin-right:80rpx;top:{{StatusBar}}px;'>
+    </view>
+  </view>
+</view>
+<view class='bg-white' style="top:{{CustomBar}}px;position:fixed;width:100%;">
+<scroll-view scroll-x class="bg-white nav text-center" wx:if="{{role == 'Passenger'}}">
+  <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{6}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+    {{tablistp[index]}}
+  </view>
+</scroll-view>
+<scroll-view scroll-x class="bg-white nav text-center" wx:if="{{role == 'Driver'}}">
+  <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{6}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+    {{tablistd[index]}}
+  </view>
+</scroll-view>
+</view>
+
+<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
+  <view class='load-progress-bar bg-blue' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+  <view class='load-progress-spinner text-blue'></view>
+</view>
+
+
+<view style='margin-top:{{CustomBar-StatusBar}}px'></view>
+<view wx:for="{{orderlist}}" wx:key class='padding-xs'>
+
+  <view class='margin' bindtap='go_detail' id='{{item.id}}' data-name="{{item.confirm_isget}}" data-pay="{{item.pay_status}}">
+    <view class="shadow bg-blue radius">
+      <view class='grid col-3' style='height:60px;'>
+        <view class="flex justify-center align-center padding-sm">{{item.startname}}</view>
+        <view class='flex justify-center align-center'>
+          <image src='/img/go.png' style='width:20px;height:20px;' mode='aspectFit'></image>
+        </view>
+        <view class="flex justify-center align-center padding-sm">{{item.endname}}</view>
+      </view>
+    </view>
+    <view class="shadow bg-white radius">
+      <view class=''>
+        <view class="flex align-center justify-between">
+          <view class='text-center padding-left-sm text-bold '>{{item.username}}</view>
+          <view class='text-center padding-right-lg '>{{item.usertel}}</view>
+        </view>
+
+        <view class="flex justify-between align-center text-sm">
+          <view class='text-center padding-left-sm text-bold'>{{item.time}}</view>
+          <view class='text-center padding-right-lg text-bold'>{{item.date}}</view>
+        </view>
+
+        <view class="flex align-center text-sm">
+          <view class='text-center padding-left-sm text-bold'>备注:{{item.desc}}</view>
+        </view>
+
+        <view class="flex align-center justify-between">
+          <view class='text-center padding-left-sm text-price text-red text-bold'>{{item.cost}}</view>
+          <view class='text-center padding-right-lg  text-bold '>{{item.peonum}}人</view>
+        </view>
+
+
+        <view class="flex align-center text-sm">
+          <view class='text-center padding-left-sm '>订单状态:{{item.pay_status?' ':'未支付 '}}{{item.isget?'已浏览 ':'未浏览 '}}{{item.cancel?'已取消 ':' '}}</view>
+        </view>
+
+        <view class="flex align-center text-sm">
+          <view class='text-center padding-left-sm '>完成状态:{{item.completion?'已完成':'未完成'}}</view>
+        </view>
+
+        <view class="flex align-center text-sm">
+          <view class='text-center padding-left-sm  padding-bottom-sm'>订单号:{{item.id}}</view>
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+
+</view>
+<view class="weui-loadmore weui-loadmore_line " hidden='{{!over}}' style='margin-top:{{CustomBar}}px'>
+  <view class="weui-loadmore__tips weui-loadmore__tips_in-line ">没有更多了</view>
+</view>

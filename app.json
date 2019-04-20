@@ -1,12 +1,49 @@
 {
-  "pages":[
-    "pages/index/index"
+  "pages": [
+    "pages/home/home",
+    "pages/sign_in/sign_in",
+    "pages/register/register",
+    "pages/register/Driver_reg/Driver_reg",
+    "pages/register/Passenger_reg/Passenger_reg",
+    "pages/pay_order/no_pay/no_pay",
+    "pages/pay_order/pay_order",
+    "pages/menu/about/about",
+    "pages/menu/feedback/feedback",
+    "pages/menu/help/help",
+    "pages/menu/modify/modify",
+    "pages/menu/mytrip/mytrip",
+    "pages/driver/order_detail/order_detail",
+    "pages/menu/mytrip/mytrip_detail/mytrip_detail",
+    "pages/pay_order/order_detail/order_detail",
+    "pages/order/order_coming/order_coming",
+    "pages/order/order_passenger",
+    "pages/order/order_driver",
+    "pages/order/order",
+    "pages/driver/driver",
+    "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "ColorUI",
     "navigationStyle": "custom",
-    "navigationBarTextStyle": "white"
-  }
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "plugins": {
+    "sdkPlugin": {
+      "version": "2.0.8",
+      "provider": "wxc6b86e382a1e3294"
+    },
+    "wxparserPlugin": {
+      "version": "0.2.1",
+      "provider": "wx9d4d4ffa781ff3ac"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取当前位置"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
 }

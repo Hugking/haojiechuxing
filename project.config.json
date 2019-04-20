@@ -4,21 +4,25 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
-	"appid": "wx52590390436baa3f",
-	"projectname": "template",
+	"libVersion": "2.4.4",
+	"appid": "wx37c9d625eddac654",
+	"projectname": "%E5%97%A8%E7%9A%AE%E5%87%BA%E8%A1%8C1.0.1",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
+	"cloudfunctionRoot": "cloud-functions/",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -28,13 +32,144 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/register/register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "注册为司机",
+					"pathName": "pages/register/Driver_reg/Driver_reg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "注册为乘客",
+					"pathName": "pages/register/Passenger_reg/Passenger_reg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "订单详情",
+					"pathName": "pages/pay_order/pay_order",
+					"query": "id=5cb0a7ced6e5270b0b5d6f52",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "未支付",
+					"pathName": "pages/pay_order/no_pay/no_pay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "我的订单",
+					"pathName": "pages/menu/mytrip/mytrip",
+					"query": "TabCur =\"未支付\"",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/sign_in/sign_in",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "支付失败",
+					"pathName": "pages/pay_order/no_pay/no_pay",
+					"query": "id=5cb0a779d6e5271a7b5d6df6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/driver/order_detail/order_detail",
+					"query": "order_info.cost=30",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "正在进行中的订单",
+					"pathName": "pages/order/order_coming/order_coming",
+					"query": "id=5caf520657c2943f0eecc759",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "正在接单",
+					"pathName": "pages/driver/order_detail/order_detail",
+					"query": "id=5caf520657c2943f0eecc759",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "司机端",
+					"pathName": "pages/driver/driver",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "司机订单",
+					"pathName": "pages/order/order_driver",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "乘客订单",
+					"pathName": "pages/order/order_passenger",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "下订单详情",
+					"pathName": "pages/order/order",
+					"query": "id=5cb81e155a2f9e42156c4233",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "预付订单详情",
+					"pathName": "pages/pay_order/order_detail/order_detail",
+					"query": "id=5cb81e155a2f9e42156c4233",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "关于我们",
+					"pathName": "pages/menu/about/about",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "意见反馈",
+					"pathName": "pages/menu/feedback/feedback",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

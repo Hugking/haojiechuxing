@@ -1,0 +1,12 @@
+<!--pages/logs/logs.wxml-->
+<view class="cu-timeline" style='height:100vh'>
+  <view class="cu-item text-blue">
+    <view class="bg-blue content shadow-blur">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v1.0.1</view>
+        <view class="cu-tag line-white">2019/04/19</view>
+      </view>
+      <view class="margin-top-sm text-content">1.0版本上线</view>
+    </view>
+  </view>
+</view>

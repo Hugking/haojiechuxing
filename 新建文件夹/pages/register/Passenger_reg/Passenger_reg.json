@@ -1,0 +1,11 @@
+{
+  "usingComponents": {},
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "乘客注册",
+  "disableSwipeBack": false,
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "light"
+}

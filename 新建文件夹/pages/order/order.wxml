@@ -1,0 +1,64 @@
+<!--pages/order/order.wxml-->
+<view class="margin-sm radius bg-white">
+  <view class='cu-bar  solid-bottom'>
+    <view class="action">
+      <text class='text-black text-xl'>预约</text>
+    </view>
+  </view>
+  <view class='cu-bar'>
+    <view class="action">
+      <text class="icon-time text-gray"></text>
+      <text class='text-gray '>{{item.time}}</text>
+    </view>
+  </view>
+  <view class='cu-bar'>
+    <view class="action">
+      <text class="icon-title text-cyan"></text>
+      <text class='text-gray'>{{item.startname}}</text>
+    </view>
+  </view>
+  <view class='cu-bar'>
+    <view class="action">
+      <text class="icon-title text-blue"></text>
+      <text class='text-gray'>{{item.endname}}</text>
+    </view>
+  </view>
+  <view class='cu-bar solid-bottom'>
+    <view class="action">
+      <text class="icon-phone text-gray"></text>
+      <text class='text-gray'>{{item.usertel}}</text>
+    </view>
+  </view>
+  <view class='cu-bar'>
+    <view class="action">
+      <text class='text-black text-sm'>实付金额</text>
+    </view>
+    <view class="action">
+      <text class="text-red {{item.pay_status?'text-price':''}}">{{item.pay_status&&!item.cancel?item.cost:''}}{{!item.pay_status&&!item.cancel?'暂未支付':''}}{{item.cancel?'已取消':''}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="margin-sm radius bg-white">
+  <view class='cu-bar  solid-bottom'>
+    <view class="action">
+      <text class='text-black text-xl'>订单信息</text>
+    </view>
+  </view>
+  <view class='cu-bar'>
+    <view class="action">
+      <text class='text-black text-sm'>订单编号</text>
+    </view>
+    <view class="action">
+      <text class='text-black'>{{item.id}}</text>
+    </view>
+  </view>
+  <view class='cu-bar'>
+    <view class="action">
+      <text class='text-black text-sm'>创建时间</text>
+    </view>
+    <view class="action">
+      <text class='text-black '>{{item.created_at}}</text>
+    </view>
+  </view>
+</view>
