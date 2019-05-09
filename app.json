@@ -11,16 +11,18 @@
     "pages/menu/feedback/feedback",
     "pages/menu/help/help",
     "pages/menu/modify/modify",
-    "pages/menu/mytrip/mytrip",
     "pages/driver/order_detail/order_detail",
-    "pages/menu/mytrip/mytrip_detail/mytrip_detail",
     "pages/pay_order/order_detail/order_detail",
     "pages/order/order_coming/order_coming",
     "pages/order/order_passenger",
     "pages/order/order_driver",
     "pages/order/order",
     "pages/driver/driver",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/test/test",
+    "pages/menu/money/money",
+    "pages/menu/money/detail/detail",
+    "pages/menu/money/up_pic/up_pic"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -44,6 +46,5 @@
     "scope.userLocation": {
       "desc": "获取当前位置"
     }
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

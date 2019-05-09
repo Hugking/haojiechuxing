@@ -1,0 +1,10 @@
+{
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "我的余额",
+  "disableSwipeBack": false,
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "light"
+}

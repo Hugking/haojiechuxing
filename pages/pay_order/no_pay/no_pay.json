@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "支付失败",
+  "disableSwipeBack": false,
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "light"
 }

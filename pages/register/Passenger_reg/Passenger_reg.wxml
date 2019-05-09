@@ -1,2 +1,37 @@
 <!--pages/register/Passenger_reg/Passenger_reg.wxml-->
-<text>pages/register/Passenger_reg/Passenger_reg.wxml</text>
+<form bindsubmit='submit'>
+  <view class="cu-form-group margin-top">
+    <view class='title'>姓名</view>
+    <input placeholder="您的真实姓名(便于联系)" class='radius' name='name'></input>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>手机号码</view>
+    <input placeholder="例：170xxxx1" class='radius' name='tel'></input>
+    <view class="cu-capsule radius">
+      <view class='cu-tag bg-blue '>
+        +86
+      </view>
+      <view class="cu-tag ">
+        中国大陆
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>学校</view>
+    <input placeholder="您的学校" class='radius' name='school'></input>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>年级</view>
+    <input placeholder="您的年级" class='radius' name='grade'></input>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>专业</view>
+    <input placeholder="您的专业" class='radius' name='magor'></input>
+  </view>
+  <view class="flex justify-center padding margin-top">
+    <view class="cu-bar btn-group">
+      <button form-type='submit' class='cu-btn round bg-blue shadow'> 提交 </button>
+      <button form-type='reset' class='cu-btn round  bg-white shadow'> 重置</button>
+    </view>
+  </view>
+</form>

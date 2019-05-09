@@ -28,6 +28,18 @@ function Formatunixtime(UnixTime) {
   minute = minute < 10 ? ('0' + minute) : minute;
   return h + ':' + minute ;
 };
+function Formatunixtimeh(UnixTime) {
+  var date = new Date(parseInt(UnixTime * 1000));
+  var h = date.getHours();
+  h = h < 10 ? ('0' + h) : h;
+  return h;
+};
+function Formatunixtimem(UnixTime) {
+  var date = new Date(parseInt(UnixTime * 1000));
+  var minute = date.getMinutes();
+  minute = minute < 10 ? ('0' + minute) : minute;
+  return minute;
+};
 function Formatunixdate(UnixTime) {
   var date = new Date(parseInt(UnixTime * 1000));
   var y = date.getFullYear();
@@ -60,5 +72,7 @@ module.exports = {
   Formatunixtime: Formatunixtime,
   Formatunixdate: Formatunixdate,
   Formatunix: Formatunix,
-  getTimeStamp: getTimeStamp
+  getTimeStamp: getTimeStamp,
+  Formatunixtimeh:Formatunixtimeh,
+  Formatunixtimem: Formatunixtimem
 }

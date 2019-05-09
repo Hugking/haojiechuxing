@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "修改信息",
+  "disableSwipeBack": false,
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "light"
 }

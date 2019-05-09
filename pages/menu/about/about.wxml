@@ -1,2 +1,29 @@
 <!--pages/menu/about/about.wxml-->
-<text>pages/menu/about/about.wxml</text>
+<view class='margin-sm bg-white padding-sm radius'>
+  <view class='text-content text-gray'>
+    <wxparser rich-text="{{content}}" />
+  </view>
+</view>
+<view class='margin-left-xl margin-sm' bindtap='car' data-target="Modal">
+  <text class='text-blue text-sm'>顺风车信息平台用户协议</text>
+</view>
+<view class='margin-left-xl margin-sm' bindtap='soft' data-target="Modal">
+  <text class='text-blue text-sm'>豪杰出行软件使用协议</text>
+</view>
+<view class='margin-left-xl margin-sm' bindtap='user' data-target="Modal">
+  <text class='text-blue text-sm'>个人信息保护及隐私政策</text>
+</view>
+
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">协议</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-sm">
+      <wxparser rich-text="{{contentup}}" />
+    </view>
+  </view>
+</view>

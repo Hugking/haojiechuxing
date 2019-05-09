@@ -1,3 +1,13 @@
 {
-  "usingComponents": {}
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "豪杰出行",
+  "disableSwipeBack": false,
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "ticket-report-wrapper": "plugin://sdkPlugin/ticket-report-wrapper"
+  }
 }

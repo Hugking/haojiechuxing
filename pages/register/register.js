@@ -5,62 +5,102 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    value:[]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  checkboxChange(e) {
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      value: e.detail.value
+    })
+  },
+  onLoad(e) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  driver(e) {
+    if (this.data.value.length==3) {
+      wx.navigateTo({
+        url: '../register/Driver_reg/Driver_reg',
+      })
+    } else {
+      this.setData({
+        modalName: 'Modal'
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  passenger(e) {
+    if (this.data.value.length == 3) {
+      wx.navigateTo({
+        url: '../register/Passenger_reg/Passenger_reg',
+      })
+    } else {
+      this.setData({
+        modalName: 'Modal'
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  showModal(e){
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  look(e) {
+    this.setData({
+      look: true,
+      modalName: null
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  car(e) {
+    this.showModal(e);
+    wx.showNavigationBarLoading()
+    let contentGroupID = 1556291137908242
+    let richTextID = 1556291272775138
+    let MyContentGroup = new wx.BaaS.ContentGroup(contentGroupID)
+    MyContentGroup.getContent(richTextID).then(res => {
+      // success
+      this.setData({
+        contentup: res.data.content
+      })
+      wx.hideNavigationBarLoading()
+    }, err => {
+      // err
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  soft(e) {
+    this.showModal(e);
+    wx.showNavigationBarLoading()
+    let contentGroupID = 1556291418789706
+    let richTextID = 1556291452718949
+    let MyContentGroup = new wx.BaaS.ContentGroup(contentGroupID)
+    MyContentGroup.getContent(richTextID).then(res => {
+      // success
+      this.setData({
+        contentup: res.data.content
+      })
+      wx.hideNavigationBarLoading()
+    }, err => {
+      // err
+    })
+  },
+  user(e) {
+    this.showModal(e);
+    wx.showNavigationBarLoading()
+    let contentGroupID = 1556291303339115
+    let richTextID = 1556291402469161
+    let MyContentGroup = new wx.BaaS.ContentGroup(contentGroupID)
+    MyContentGroup.getContent(richTextID).then(res => {
+      // success
+      this.setData({
+        contentup: res.data.content
+      })
+      wx.hideNavigationBarLoading()
+    }, err => {
+      // err
+    })
   }
 })

@@ -1,0 +1,12 @@
+<!--pages/test/test.wxml-->
+<view class="text-center bg-white" style='position:fixed;width:100%;bottom:0px;'>
+  <view bindtap='pay' class='round padding-sm bg-blue margin-lr-xl margin-tb-xs'>确认订单</view>
+</view>
+<view class="text-center bg-white" style='position:fixed;width:100%;bottom:60px;'>
+  <view bindtap='pay_black' class='round padding-sm bg-blue margin-lr-xl margin-tb-xs'>退款订单</view>
+</view>
+
+<view class="text-center bg-white" style='position:fixed;width:100%;bottom:120px;'>
+  <view bindtap='amount' class='round padding-sm bg-blue margin-lr-xl margin-tb-xs'>账户</view>
+</view>
+

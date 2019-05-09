@@ -1,0 +1,42 @@
+<!--pages/menu/money/money.wxml-->
+<view class='margin-xs padding-xs bg-white light radius'>
+  <view class='text-center padding-top'>我的余额</view>
+  <view class='text-center padding-tb-xl'>
+    <text class='text-red text-blod text-price text-xxl'>{{now_cost?now_cost:'0'}}</text>
+  </view>
+  <view class='text-center padding-lr text-sm padding-bottom-xs' bindtap='go_detail'>
+    <text>查看明细</text>
+    <text class='text-black icon-right'></text>
+  </view>
+  <view class='grid col-3 padding-lr text-sm padding-bottom-xs'>
+    <view class='padding-sm text-center' bindtap='go_detail'>
+      <view>
+        <text class='text-center'>已提现</text>
+      </view>
+      <view class='padding-top-xs'>
+        <text class='text-red text-price'>{{yes_cost?yes_cost:'0'}}</text>
+      </view>
+    </view>
+    <view class='padding-sm text-center' bindtap='go_detail'>
+      <view>
+        <text class='text-center'>未到账</text>
+      </view>
+      <view class='padding-top-xs'>
+        <text class='text-red text-price padding-sm'>{{no_cost?no_cost:'0'}}</text>
+      </view>
+    </view>
+    <view class='padding-sm text-center' bindtap='go_detail'>
+      <view>
+        <text class='text-center'>累计结算</text>
+      </view>
+      <view class='padding-top-xs'>
+        <text class='text-red text-price padding-sm'>{{total_cost?total_cost:'0'}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='margin-xs padding-xs bg-white light radius'>
+  <view class='text-center padding-top'>结算周期说明：本程序即日起至2019年8月31日前为每周四下午人工提现，其余时间不予审核打款，金额由于银行打款原因可能会推迟，2019年8月31日后为自动提现，敬请期待
+  </view>
+</view>

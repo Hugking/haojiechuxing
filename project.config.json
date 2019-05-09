@@ -15,7 +15,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.4.4",
 	"appid": "wx37c9d625eddac654",
-	"projectname": "%E5%97%A8%E7%9A%AE%E5%87%BA%E8%A1%8C1.0.1",
+	"projectname": "%E8%B1%AA%E6%9D%B0%E5%87%BA%E8%A1%8C1.0.1",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -23,6 +23,7 @@
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -41,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 19,
 			"list": [
 				{
 					"id": -1,
@@ -166,6 +167,20 @@
 					"id": -1,
 					"name": "意见反馈",
 					"pathName": "pages/menu/feedback/feedback",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试",
+					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "我的余额",
+					"pathName": "pages/menu/money/money",
 					"query": "",
 					"scene": null
 				}

@@ -1,2 +1,67 @@
 <!--pages/pay_order/pay_order.wxml-->
-<text>pages/pay_order/pay_order.wxml</text>
+<view class='bg-gradual-red cf' style='height:200rpx'>
+  <view class='fl text-center margin-xl'>
+    <text class='text-white'>大约</text>
+    <text class='text-white'>{{order_info.distance}}公里</text>
+  </view>
+  <view class='fr margin-xl'>
+    <text class='text-white'>应付金额：</text>
+    <text class='text-price text-white text-bold text-xxl'>{{cost}}</text>
+  </view>
+</view>
+
+
+
+<view style='position:relative;top:-100rpx;width:100%'>
+  <view class="margin radius bg-white">
+    <view class='cu-bar solid-bottom'>
+      <view class="action">
+        <text class='text-black text-xl'>预约</text>
+      </view>
+    </view>
+    <view class='cu-bar'>
+      <view class="action">
+        <text class="icon-time text-gray"></text>
+        <text class='text-gray '>{{order_info.time}}</text>
+      </view>
+    </view>
+    <view class='cu-bar'>
+      <view class="action">
+        <text class="icon-title text-cyan"></text>
+        <text class='text-gray'>{{order_info.startname}}</text>
+      </view>
+    </view>
+    <view class='cu-bar'>
+      <view class="action">
+        <text class="icon-title text-blue"></text>
+        <text class='text-gray'>{{order_info.endname}}</text>
+      </view>
+    </view>
+
+    <view class="cu-form-group">
+      <view class='title text-black'>乘车人数</view>
+      <picker bindchange="Pickerpeonum" value="{{indexr}}" range="{{peonumarr}}">
+        <view class="picker text-black">
+          {{peonumarr[indexr]}}
+        </view>
+      </picker>
+    </view>
+
+
+    <view class="cu-bar solid-bottom">
+      <view class="action">
+        <text class='text-black'>备注：</text>
+      </view>
+    </view>
+    <view class='margin'>
+      <textarea placeholder="例:赶9：30的火车" maxlength="-1" placeholder-class="placeholder" bindinput="desc" show-confirm-bar='true' style='height:100px;' value="{{desc?desc:''}}"></textarea>
+    </view>
+
+    <!-- class="{{desc?'value':''}}"  -->
+
+
+  </view>
+</view>
+<view class="text-center bg-white" style='position:fixed;width:100%;bottom:0px;'>
+  <view bindtap='pay_order' class='round padding-sm bg-blue margin-lr-xl margin-tb-xs'>确认订单</view>
+</view>

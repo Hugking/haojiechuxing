@@ -1,2 +1,81 @@
 <!--pages/pay_order/order_detail/order_detail.wxml-->
-<text>pages/pay_order/order_detail/order_detail.wxml</text>
+<view class="cu-modal {{modalName=='DialogModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class='content'>支付</view>
+      <view class='action' bindtap='hideModal'>
+        <text class='icon-close text-red'></text>
+      </view>
+    </view>
+    <view class='padding-xl'>
+      <view class='text-xl'>
+        <text class='text-price text-red'>{{order_info.cost}}</text>
+      </view>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class='action margin-0 flex-sub solid-left' bindtap='nopay'>取消</view>
+      <view class='action margin-0 flex-sub text-green' bindtap='pay'>
+        <text class='icon-moneybag'></text>微信支付</view>
+    </view>
+  </view>
+</view>
+<view>
+  <map id="myMap" style="width: 100%; height:{{mapheight?mapheight:'300px'}}" subkey='5U7BZ-QDB6X-MDS46-ZWGSA-WXRKZ-SMBVD' longitude="{{longitude}}" latitude="{{latitude}}" scale='14' markers="{{markerfin}}" polyline="{{polyline}}" show-location hidden='{{hidden}}'>
+  </map>
+</view>
+<view class='bg-white' style='position:fixed;bottom:0px;width:100%' id='getheight'>
+  <view class='grid col-3 solids-bottom text-black'>
+    <view class='text-center padding-sm' bindtap='call_admin'>
+      <view>
+        <text class="icon-questionfill lg text-black"></text>
+      </view>
+      <view>
+        <text class='text-xs padding-sm'>联系客服</text>
+      </view>
+    </view>
+    <view class='text-center padding-sm' bindtap='go_detail'>
+      <view>
+        <text class="icon-formfill lg text-black"></text>
+      </view>
+      <view>
+        <text class='text-xs padding-sm' >订单详情</text>
+      </view>
+    </view>
+    <view class='text-center padding-sm' bindtap='cancel'>
+      <view>
+        <text class="icon-roundclosefill lg text-black"></text>
+      </view>
+      <view>
+        <text class='text-xs padding-sm'>取消订单</text>
+      </view>
+    </view>
+  </view>
+  <!-- 取消订单 -->
+  <!-- <view class="padding-xl">
+    <view class="flex-sub text-center">
+      <view class="text-sm padding-sm">
+        <text class="text-gray text-black text-blod">订单已取消</text>
+      </view>
+      <view class="text-xs padding-sm">
+        <text class="text-gray">订单已取消,期待您的再次使用</text>
+      </view>
+    </view>
+  </view> -->
+  <view class="padding">
+    <view class="flex-sub text-center">
+      <view class="text-xs padding-sm">
+        <text class="text-black">订单支付时间剩余</text>
+        <text class='text-red'>{{countDownMinute}}:{{countDownSecond}}</text>
+      </view>
+    </view>
+    <view class="flex-sub text-center">
+      <view class="text-xl padding-sm">
+        <text class="text-price text-red">{{order_info.cost}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="padding text-center bg-{{order_info.cost?'blue':'red'}}">
+    <view wx:if="{{!order_info.cost}}">立即支付</view>
+    <view bindtap="pay_order" data-target="DialogModal" wx:if="{{order_info.cost}}">立即支付</view>
+  </view>
+</view>

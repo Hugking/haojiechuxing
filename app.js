@@ -16,12 +16,7 @@ App({
     let clientID = '3f5751e5076c11b4d4df'
     wx.BaaS.init(clientID)
 
-    var role = wx.getStorageSync('role') || []
-
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    wx.setStorageSync('first_tost', true)
 
     // 获取用户信息
     wx.getSetting({
@@ -58,7 +53,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    access_token: '',
+    // ["平顶山学院", "平顶山学院医学院", "河南城建学院西门", "河南城建学院北门", '河南城建学院东门', '平顶山站', '平顶山西站', '平顶山汽车站', '平顶山长途汽车站', "平顶山市区", "鲁山", "叶县", "漯河西站", "许昌东站", "郑州新郑国际机场", "郑州东站", "郑州站", "郑州地铁站", "郑州(三环内)"]
     hotaddr: [{
         latitude: 33.74882,
         longitude: 113.20913,
@@ -84,67 +79,11 @@ App({
         bg: "bg-olive"
       },
       {
-        latitude: 33.7193,
-        longitude: 113.30413,
-        name: '平顶山站',
-        bg: 'bg-green'
-      },
-      {
-        latitude: 33.85509,
-        longitude: 113.04694,
-        name: '平顶山西站',
-        bg: 'bg-cyan'
-      },
-      {
-        latitude: 33.74109,
-        longitude: 113.32619,
-        name: '平顶山长途汽车站',
+        latitude: 33.771024,
+        longitude: 113.194929,
+        name: '河南城建学院东门',
         bg: 'bg-blue'
       },
-      {
-        latitude: 33.72517,
-        longitude: 113.30505,
-        name: '平顶山汽车站',
-        bg: 'bg-purple'
-      },
-      {
-        latitude: 33.57271,
-        longitude: 113.96334,
-        name: "漯河西站",
-        bg: "bg-mauve"
-      },
-      {
-        latitude: 34.04806,
-        longitude: 113.88765,
-        name: "许昌东站",
-        bg: "bg-pink"
-      },
-      {
-        latitude: 34.525319858,
-        longitude: 113.854726419,
-        name: "郑州新郑国际机场",
-        bg: "bg-brown"
-      },
-      {
-        latitude: 34.759276621,
-        longitude: 113.779147133,
-        name: "郑州东站",
-        bg: "bg-grey"
-      },
-      {
-        latitude: 34.746045932,
-        longitude: 113.659617973,
-        name: "郑州站",
-        bg: "bg-gray"
-      },
-      {
-        latitude: 34.746648,
-        longitude: 113.655957,
-        name: "郑州地铁站",
-        bg: "bg-blue"
-      }
-    ],
-    enhotaddr: [
       {
         latitude: 33.7193,
         longitude: 113.30413,
@@ -158,77 +97,77 @@ App({
         bg: 'bg-cyan'
       },
       {
-        latitude: 33.74109,
-        longitude: 113.32619,
-        name: '平顶山长途汽车站',
-        bg: 'bg-blue'
-      },
-      {
         latitude: 33.72517,
         longitude: 113.30505,
         name: '平顶山汽车站',
         bg: 'bg-purple'
       },
       {
-        latitude: 33.57271,
-        longitude: 113.96334,
-        name: "漯河西站",
-        bg: "bg-mauve"
+        latitude: 33.74109,
+        longitude: 113.32619,
+        name: '平顶山长途汽车站',
+        bg: 'bg-blue'
       },
-      {
-        latitude: 34.04806,
-        longitude: 113.88765,
-        name: "许昌东站",
-        bg: "bg-pink"
-      },
-      {
-        latitude: 34.525319858,
-        longitude: 113.854726419,
-        name: "郑州新郑国际机场",
-        bg: "bg-brown"
-      },
-      {
-        latitude: 34.759276621,
-        longitude: 113.779147133,
-        name: "郑州东站",
-        bg: "bg-grey"
-      },
-      {
-        latitude: 34.746045932,
-        longitude: 113.659617973,
-        name: "郑州站",
-        bg: "bg-gray"
-      },
-      {
-        latitude: 34.746648,
-        longitude: 113.655957,
-        name: "郑州地铁站",
-        bg: "bg-blue"
-      },
-      {
-        latitude: 33.74882,
-        longitude: 113.20913,
-        name: "平顶山学院",
-        bg: "bg-red"
-      },
-      {
-        latitude: 33.77323,
-        longitude: 113.17813,
-        name: "平顶山学院医学院",
-        bg: "bg-orange"
-      },
-      {
-        latitude: 33.77242,
-        longitude: 113.18154,
-        name: "河南城建学院西门",
-        bg: "bg-yellow"
-      },
-      {
-        latitude: 33.7267,
-        longitude: 113.32885,
-        name: "河南城建学院北门",
-        bg: "bg-olive"
-      },
+      // {
+      //   latitude: 33.744753,
+      //   longitude: 113.305814,
+      //   name: "平顶山市区",
+      //   bg: "bg-mauve"
+      // },
+      // {
+      //   latitude: 33.738518,
+      //   longitude: 112.908023,
+      //   name: "鲁山",
+      //   bg: "bg-mauve"
+      // },
+      // {
+      //   latitude: 33.626731,
+      //   longitude: 113.357239,
+      //   name: "叶县",
+      //   bg: "bg-mauve"
+      // },
+      // {
+      //   latitude: 33.57271,
+      //   longitude: 113.96334,
+      //   name: "漯河西站",
+      //   bg: "bg-mauve"
+      // },
+      // {
+      //   latitude: 34.04806,
+      //   longitude: 113.88765,
+      //   name: "许昌东站",
+      //   bg: "bg-pink"
+      // },
+      // {
+      //   latitude: 34.525319858,
+      //   longitude: 113.854726419,
+      //   name: "郑州新郑国际机场",
+      //   bg: "bg-brown"
+      // },
+      // {
+      //   latitude: 34.759276621,
+      //   longitude: 113.779147133,
+      //   name: "郑州东站",
+      //   bg: "bg-grey"
+      // },
+      // {
+      //   latitude: 34.746045932,
+      //   longitude: 113.659617973,
+      //   name: "郑州站",
+      //   bg: "bg-gray"
+      // },
+      // {
+      //   latitude: 34.746648,
+      //   longitude: 113.655957,
+      //   name: "郑州地铁站",
+      //   bg: "bg-blue"
+      // },
+      // {
+      //   latitude: 34.763725,
+      //   longitude: 113.682035,
+      //   name: "郑州(三环内)",
+      //   bg: "bg-blue"
+      // }
     ],
     ColorList: [{
         title: '嫣红',
@@ -305,46 +244,7 @@ App({
         name: 'white',
         color: '#ffffff'
       }
-    ]
-  }
+    ],
+    settleList:[]
+  },
 })
-// ChooseImagedl() {
-//   wx.chooseImage({
-//     count: 4, //默认9
-//     sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-//     sourceType: ['album'], //从相册选择
-//     success: (res) => {
-//       if (this.data.Driver_lic.length != 0) {
-//         this.setData({
-//           Driver_lic: this.data.Driver_lic.concat(res.tempFilePaths)
-//         })
-//       } else {
-//         this.setData({
-//           Driver_lic: res.tempFilePaths
-//         })
-//       }
-//     }
-//   });
-// },
-// ViewImagedl(e) {
-//   wx.previewImage({
-//     urls: this.data.Driver_lic,
-//     current: e.currentTarget.dataset.url
-//   });
-// },
-// DelImgdl(e) {
-//   wx.showModal({
-//     title: '删除',
-//     content: '确定要删除吗？',
-//     cancelText: '取消',
-//     confirmText: '确认',
-//     success: res => {
-//       if (res.confirm) {
-//         this.data.Driver_lic.splice(e.currentTarget.dataset.index, 1);
-//         this.setData({
-//           Driver_lic: this.data.Driver_lic
-//         })
-//       }
-//     }
-//   })
-// },

@@ -1,2 +1,108 @@
 <!--pages/order/order_coming/order_coming.wxml-->
-<text>pages/order/order_coming/order_coming.wxml</text>
+
+<!-- <view class='margin'>
+  <view class="shadow bg-blue radius">
+    <view class='grid col-3' style='height:60px;'>
+      <view class="flex justify-center align-center padding-sm">{{item.startname}}</view>
+        <view class='flex justify-center align-center'>
+          <image src='/img/go.png' style='width:20px;height:20px;' mode='aspectFit'></image>
+        </view>
+      <view class="flex justify-center align-center padding-sm">{{item.endname}}</view>
+    </view>
+  </view>
+  <view class="shadow bg-white radius">
+    <view class=''>
+      <view class="flex align-center justify-between">
+        <view class='text-center padding-left-sm text-bold '>{{item.username}}</view>
+        <view class='text-center padding-right-lg '>{{item.usertel}}</view>
+      </view>
+
+      <view class="flex justify-between align-center text-sm">
+        <view class='text-center padding-left-sm'>{{item.time}}</view>
+        <view class='text-center padding-right-lg'>{{item.date}}</view>
+      </view>
+
+      <view class="flex align-center text-sm">
+        <view class='text-center padding-left-sm text-bold'>备注:{{item.desc}}</view>
+      </view>
+
+      <view class="flex align-center justify-between">
+        <view class='text-center padding-left-sm text-bold'></view>
+        <view class='text-center padding-right-lg  text-bold '>{{item.peonum}}人</view>
+      </view>
+
+      <view class="flex align-center text-sm">
+        <view class='text-center padding-left-sm  padding-bottom-sm'>订单号:{{item.id}}</view>
+      </view>
+    </view>
+  </view>
+</view> -->
+<view class="margin-xs radius bg-white cf" id='getheight1'>
+  <view class='shownav'>
+    <view class='padding-xs fl cf  flex align-center'>
+      <view class='fl margin-sm'>
+        <text class="text-{{nowtime>item.pre_time_str?'gray':'orange'}}">{{item.time}}</text>
+      </view>
+      <view class='fr margin-sm'>
+        <view class='action  padding-top-xs'>
+          <text class="icon-title text-{{nowtime>item.pre_time_str?'gray':'blue'}}"></text>
+          <text class="text-{{nowtime>item.pre_time_str?'gray':'black'}} text-bold text-sm">{{item.startname}}-{{item.endname}}</text>
+        </view>
+        <view class='action padding-top-xs'>
+          <text class='icon-title text-gray text-sm'>出行时间：{{item.datetime}}</text>
+        </view>
+        <view class='action padding-top-xs'>
+          <text class='icon-title text-gray text-sm'>备注：{{item.desc?item.desc:'无'}}</text>
+        </view>
+        <view class='action padding-top-xs' bindtap='phonecall'>
+          <text class='icon-title text-gray text-sm'>电话：{{item.usertel}}(点我拨打)</text>
+        </view>
+      </view>
+    </view>
+    <view class='padding-right-sm padding-top-xs padding-bottom-xs fr'>
+      <view class='action padding-top-sm'>
+        <text class="text{{!item.in_car&&!item.completion?'-red':''}} text{{item.in_car&&!item.completion?'-green':''}} text{{item.completion?'-blue':''}} text-blod">
+        {{!item.in_car&&!item.completion?'未上车':''}}{{item.in_car&&!item.completion?'进行中':''}}{{item.completion?'已完成':''}}
+        </text>
+      </view>
+      <view class='action padding-top-xs'>
+        <text class="text-blod text-{{nowtime>item.pre_time_str?'gray':'black'}} ">{{item.peonum}}人</text>
+      </view>
+    </view>
+  </view>
+</view>
+<map id="myMap" style="width: 100%; height: 750rpx" subkey='5U7BZ-QDB6X-MDS46-ZWGSA-WXRKZ-SMBVD' longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markerfin}}" polyline="{{polyline}}" show-location>
+</map>
+
+<view>
+  <view>
+    <button class='cu-btn bg-blue lg' bindtap='incar' style='width:100%;position:fixed;bottom:0px;' wx:if="{{item.confirm_isget&&!item.in_car&&!item.completion&&!item.cancel}}">确认乘客上车</button>
+  </view>
+
+  <view>
+    <form bindsubmit="formSubmit" report-submit="true">
+      <button formType="submit" class='cu-btn bg-red lg' bindtap='completion' style='width:100%;position:fixed;bottom:0px;left:0px;' wx:if="{{item.isget&&item.in_car&&!item.completion&&!item.cancel&&!item.completion}}">
+        完成订单
+      </button>
+    </form>
+  </view>
+  <view>
+    <button class='cu-btn bg-blue lg' style='width:100%;position:fixed;bottom:0px;' wx:if="{{!item.in_car&&!item.completion&&item.cancel}}" disabled type=''>已取消</button>
+  </view>
+  <view>
+    <button class='cu-btn bg-blue lg' style='width:100%;position:fixed;bottom:0px;' wx:if="{{item.completion}}" disabled type=''>已完成</button>
+  </view>
+</view>
+
+<button class='cu-btn bg-white lg' bindtap='go_index' style='width:100%;position:fixed;bottom:100rpx;' wx:if="{{index == 0}}">回首页</button>
+
+
+<!-- <view wx:if="{{role=='Passenger'}}">
+  <button class='cu-btn bg-white lg' bindtap='_reminder' style='width:100%;position:fixed;bottom:50px;' wx:if="{{!item.isget&&!item.cancel}}">催单</button>
+  <button class='cu-btn bg-white lg' style='width:100%;position:fixed;bottom:50px;' wx:if="{{!item.isget&&item.reminder&&!item.cancel}}" disabled type=''>催单</button>
+  <button class='cu-btn bg-blue lg' bindtap='_cancel' style='width:100%;position:fixed;bottom:0px;' wx:if="{{!item.isget&&!item.cancel&&900<nowtime-item.created_at}}">取消订单</button>
+  <button class='cu-btn bg-blue lg' bindtap='_cancel' style='width:100%;position:fixed;bottom:0px;' wx:if="{{!item.isget&&!item.cancel&&900>nowtime-item.created_at}}" disabled type=''>取消订单</button>
+  <button class='cu-btn bg-blue lg' style='width:100%;position:fixed;bottom:0px;' wx:if="{{item.cancel}}" disabled type=''>已取消</button>
+  <button class='cu-btn bg-blue lg' style='width:100%;position:fixed;bottom:0px;' wx:if="{{item.isget&&!item.completion}}" disabled type=''>未完成</button>
+  <button class='cu-btn bg-blue lg' style='width:100%;position:fixed;bottom:0px;' wx:if="{{item.isget&&item.completion}}" disabled type=''>已完成</button>
+</view> -->

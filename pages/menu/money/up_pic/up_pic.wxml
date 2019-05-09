@@ -1,0 +1,21 @@
+<!--pages/menu/money/up_pic/up_pic.wxml-->
+<view class="cu-bar bg-white margin-top">
+  <view class="action">
+    收款码上传
+  </view>
+</view>
+<view class="cu-form-group">
+  <view class="grid col-4 grid-square flex-sub">
+    <view class="padding-xs bg-img" style="background-image:url({{imgList[index]}})" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+      <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+        <text class="icon-close"></text>
+      </view>
+    </view>
+    <view class="padding-xs solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
+      <text class="icon-cameraadd"></text>
+    </view>
+  </view>
+</view>
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-blue margin-tb-sm lg" bindtap='up'>上传</button>
+</view>

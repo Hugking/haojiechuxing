@@ -1,66 +1,32 @@
 // pages/order/order.js
+const app = getApp()
+var util = require('../../utils/util.js');
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    item: null,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    console.log(options.id)
+    var that = this
+    that.setData({
+      id: options.id,
+      role: wx.getStorageSync("role"),
+      nowtime: Date.parse(new Date())
+    })
+    let Order = new wx.BaaS.TableObject('Order');
+    Order.get(that.data.id).then(res => {
+      // success
+      console.log('订单详情', res)
+      res.data['created_at'] = util.Formatunix(res.data['created_at'])
+      res.data.time = util.Formatunix(res.data['pre_time_str'] / 1000)
+      that.setData({
+        item: res.data
+      })
+    }, err => {
+      // err
+    })
   }
 })

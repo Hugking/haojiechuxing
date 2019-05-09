@@ -1,66 +1,97 @@
 // pages/menu/modify/modify.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    loadProgress: 0,
+    index: null,
+    sex: true,
+    picker: ['车型1', '车型2', '其他'],
+    role: null,
+    info: null,
+    id: null
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function() {
+    wx.showNavigationBarLoading()
+    var that = this
+    var role = wx.getStorageSync('role')
+    that.setData({
+      role: role
+    })
+    var userinfo = wx.getStorageSync('userinfo')
+    let Prodect = new wx.BaaS.TableObject(role)
+    let query = new wx.BaaS.Query()
+    Prodect.setQuery(query.contains('openid', userinfo.openid)).find().then(res => {
+      // success
+      console.log("查询到的信息", res.data.objects[0])
+      if (res.data.objects[0].sex == '女') {
+        that.setData({
+          sex: false
+        })
+      }
+      that.setData({
+        info: res.data.objects[0],
+        id: res.data.objects[0].id
+      })
+      wx.hideNavigationBarLoading()
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  PickerChange(e) {
+    console.log(e.detail.value);
+    this.setData({
+      index: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  sexchange(e) {
+    console.log(e.detail.value);
+    this.setData({
+      sex: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  submitd: function(e) {
+    let Product = new wx.BaaS.TableObject("Driver")
+    let product = Product.getWithoutData(this.data.id)
+    if (this.data.sex == true){
+      e.detail.value['sex']='男'
+    }
+    if (this.data.sex == false) {
+      e.detail.value['sex'] = '女'
+    }
+    console.log("填入的司机信息", e.detail.value)
+    product.set(e.detail.value)
+    product.update().then(res => {
+      // success
+      console.log(res.data)
+      wx.showToast({
+        title: '信息修改成功',
+        icon: 'success',
+        duration: 2000
+      })
+    }, err => {
+      // err
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  submitp: function(e) {
+    let Product = new wx.BaaS.TableObject("Passenger")
+    let product = Product.getWithoutData(this.data.id)
+    console.log("填入的乘客信息", e.detail.value)
+    product.set(e.detail.value)
+    product.update().then(res => {
+      // success
+      console.log(res.data)
+      wx.showToast({
+        title: '信息修改成功',
+        icon: 'success',
+        duration: 2000
+      })
+    }, err => {
+      // err
+    })
 
   }
 })

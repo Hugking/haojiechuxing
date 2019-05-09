@@ -1,2 +1,60 @@
 <!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
+<view class='margin-top-xl nav-list'>
+  <view class="nav-li bg-blue" bindtap='passenger' data-target="bottomModal">
+    <view class="nav-title">乘客</view>
+    <view class="nav-name">Passenger</view>
+  </view>
+  <view class="nav-li bg-cyan" bindtap='driver' data-target="bottomModal">
+    <view class="nav-title">司机</view>
+    <view class="nav-name">Driver</view>
+  </view>
+</view>
+<view class='flex justify-center text-sm padding '>
+  <text class='text-black'>选择您注册的类型</text>
+</view>
+<view class='flex justify-center text-xs padding-sm'>
+  <text class='text-grey'>注册为司机需要提供身份证，驾驶证，行车证，以及车辆照片，请提前备好</text>
+</view>
+
+<checkbox-group bindchange="checkboxChange">
+  <label>
+    <view class='margin-left-xl margin-sm' >
+      <checkbox class="round blue margin-sm" value='car'></checkbox>
+      <text class='text-blue text-sm' catchtap='car' data-target="bottomModal">顺风车信息平台用户协议</text>
+    </view>
+    <view class='margin-left-xl margin-sm'>
+      <checkbox class="round blue margin-sm" value='soft'></checkbox>
+      <text class='text-blue text-sm' catchtap='soft' data-target="bottomModal">豪杰出行软件使用协议</text>
+    </view>
+    <view class='margin-left-xl margin-sm'>
+      <checkbox class="round blue margin-sm" value='user'></checkbox>
+      <text class='text-blue text-sm' catchtap='user' data-target="bottomModal">个人信息保护及隐私政策</text>
+    </view>
+  </label>
+</checkbox-group>
+
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">温馨提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      请先阅读全部协议
+    </view>
+  </view>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-green"></view>
+      <view class="action text-blue" bindtap="hideModal">确定</view>
+    </view>
+    <scroll-view class="padding-sm" scroll-y style='height:700rpx'>
+      <wxparser rich-text="{{contentup}}" />
+    </scroll-view>
+  </view>
+</view>

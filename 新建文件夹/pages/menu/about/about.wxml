@@ -1,6 +1,0 @@
-<!--pages/menu/about/about.wxml-->
-<view class='margin-sm bg-white padding-xl radius'>
-  <view class='text-content text-gray' >
-    <wxparser rich-text="{{content}}" />
-  </view>
-</view>
