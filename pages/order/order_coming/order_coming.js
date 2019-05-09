@@ -208,8 +208,8 @@ Page({
           if (res.data.objects[0]) {
             var Amount = new wx.BaaS.TableObject('amount')
             let amount = Amount.getWithoutData(res.data.objects[0].id)
-            amount.set("now_cost", parseFloat((parseFloat(res.data.objects[0].now_cost).toFixed(2) + parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2))).toFixed(2)))
-            amount.set("total_cost", parseFloat((parseFloat(res.data.objects[0].total_cost).toFixed(2) + parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2))).toFixed(2)))
+            amount.set("now_cost", parseFloat(res.data.objects[0].now_cost + parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2)) ).toFixed(2) )
+            amount.set("total_cost", parseFloat(res.data.objects[0].total_cost + parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2)) ).toFixed(2))
             amount.update().then(res => {
               console.log('加入结算成功', res.data)
               wx.showToast({
@@ -221,29 +221,29 @@ Page({
               console.log('加入结算失败')
             })
           } else {
-            var Amount = new wx.BaaS.TableObject('amount')
-            let amount = Amount.create();
-            let Driver = new wx.BaaS.TableObject('Driver')
-            let query = new wx.BaaS.Query()
-            Driver.setQuery(query.contains('openid', userInfo.openid)).find().then(res => {
-              console.log(res.data.objects[0])
-              let userInfo = wx.getStorageSync('userinfo')
-              amount.set("now_cost", parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2)))
-              amount.set("total_cost", parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2)))
-              amount.set("openid", userInfo.openid)
-              amount.set("name", res.data.objects[0].name)
-              amount.save().then(res => {
-                // success
-                console.log(res)
-                wx.showToast({
-                  title: '金额已到账户',
-                  icon: 'success',
-                  duration: 2000
-                })
-              }, err => {
-                //err 为 HError 对象
-              })
-            })
+            // var Amount = new wx.BaaS.TableObject('amount')
+            // let amount = Amount.create();
+            // let Driver = new wx.BaaS.TableObject('Driver')
+            // let query = new wx.BaaS.Query()
+            // Driver.setQuery(query.contains('openid', userInfo.openid)).find().then(res => {
+            //   console.log(res.data.objects[0])
+            //   let userInfo = wx.getStorageSync('userinfo')
+            //   amount.set("now_cost", parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2)))
+            //   amount.set("total_cost", parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2)))
+            //   amount.set("openid", userInfo.openid)
+            //   amount.set("name", res.data.objects[0].name)
+            //   amount.save().then(res => {
+            //     // success
+            //     console.log(res)
+            //     wx.showToast({
+            //       title: '金额已到账户',
+            //       icon: 'success',
+            //       duration: 2000
+            //     })
+            //   }, err => {
+            //     //err 为 HError 对象
+            //   })
+            // })
           }
         })
 

@@ -296,9 +296,12 @@ Page({
           icon: 'success',
           duration: 2000
         })
-        wx.reLaunch({
-          url: '../../order/order?id=' + this.data.orderId,
-        })
+        ////BUG
+        setTimeout(function () {
+          wx.reLaunch({
+            url: '../../order/order?id=' + this.data.orderId,
+          })
+        }, 200)
         //可加订单详情页
       }, err => {
         // err
@@ -310,49 +313,55 @@ Page({
         wx.showModal({
           title: '用户尚未授权',
         })
-        let Order = new wx.BaaS.TableObject('Order')
-        Order.get(this.data.orderId).then(res => {
-          // success
-          if (res.data.trade_no){
-            let order = Order.getWithoutData(this.data.orderId)
-            order.set('pay_status', true)
-            order.update().then(res => {
-              console.log(res.data)
-              wx.reLaunch({
-                url: '../../order/order?id=' + this.data.orderId,
-              })
-            })
-          }else{
-            let order = Order.getWithoutData(this.data.orderId)
-            order.set('pay_status', false)
-            order.update().then(res => {
-              console.log(res.data)
-              wx.navigateTo({
-                url: '../no_pay/no_pay',
-              })
-            })
-          }
-        }, err => {
-          // err
-        })
+        // let Order = new wx.BaaS.TableObject('Order')
+        // Order.get(this.data.orderId).then(res => {
+        //   // success
+        //   if (res.data.trade_no){
+        //     let order = Order.getWithoutData(this.data.orderId)
+        //     order.set('pay_status', true)
+        //     order.update().then(res => {
+        //       console.log(res.data)
+        //       wx.reLaunch({
+        //         url: '../../order/order?id=' + this.data.orderId,
+        //       })
+        //     })
+        //   }else{
+        //     let order = Order.getWithoutData(this.data.orderId)
+        //     order.set('pay_status', false)
+        //     order.update().then(res => {
+        //       console.log(res.data)
+        //       wx.navigateTo({
+        //         url: '../no_pay/no_pay',
+        //       })
+        //     })
+        //   }
+        // }, err => {
+        //   // err
+        // })
       } else if (err.code === 607) {
         console.log('用户取消支付')
-        wx.navigateTo({
-          url: '../no_pay/no_pay',
-        })
+        setTimeout(function () {
+          wx.navigateTo({
+            url: '../no_pay/no_pay',
+          })
+        }, 200)
       } else if (err.code === 608) {
         console.log('支付失败', err.message)
-        wx.navigateTo({
-          url: '../no_pay/no_pay',
-        })
+        setTimeout(function () {
+          wx.navigateTo({
+            url: '../no_pay/no_pay',
+          })
+        }, 200)
       }
     })
   },
   nopay(e) {
     console.log('未支付')
-    wx.navigateTo({
-      url: '../no_pay/no_pay',
-    })
+    setTimeout(function () {
+      wx.navigateTo({
+        url: '../no_pay/no_pay',
+      })
+    }, 200)
   },
   go_detail(e) {
     wx.navigateTo({

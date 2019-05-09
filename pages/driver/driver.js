@@ -84,15 +84,15 @@ Page({
   },
   onShow: function() {
     //this.initAnimation(this.data.announcementText)
-    var that = this;
-    var length = that.data.announcementText.length * 12;//文字长度
-    var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
-    //console.log(length,windowWidth);
-    that.setData({
-      length: length,
-      windowWidth: windowWidth
-    });
-    that.scrolltxt();// 第一个字消失后立即从右边出现
+    // var that = this;
+    // var length = that.data.announcementText.length * 12;//文字长度
+    // var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
+    // //console.log(length,windowWidth);
+    // that.setData({
+    //   length: length,
+    //   windowWidth: windowWidth
+    // });
+    // that.scrolltxt();// 第一个字消失后立即从右边出现
   },
   scrolltxt: function() {
     var that = this;

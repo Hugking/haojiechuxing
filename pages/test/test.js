@@ -7,6 +7,10 @@ Page({
   data: {
     trade_no: null
   },
+  onLoad(e){
+    var num= parseFloat(37.2)
+   console.log( num.add(13.95),num.mul(2),num.sub(0.02),num.div(3))
+  },
   pay(e) {
     let params = {
       // totalCost: 0.1,
@@ -39,7 +43,9 @@ Page({
   },
   amount(e) {
     this.setData({
-      item:{'cost':'40'}
+      item: {
+        'cost': '40'
+      }
     })
     var Amount = new wx.BaaS.TableObject('amount')
     var query = new wx.BaaS.Query()
@@ -50,10 +56,10 @@ Page({
       if (res.data.objects[0]) {
         var Amount = new wx.BaaS.TableObject('amount')
         let amount = Amount.getWithoutData(res.data.objects[0].id)
-        amount.set("now_cost", parseFloat((res.data.objects[0].now_cost + parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2))).toFixed(2)))
+        amount.set("now_cost", parseFloat(res.data.objects[0].now_cost + parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2))))
         amount.set("total_cost", parseFloat((res.data.objects[0].total_cost + parseFloat((parseInt(this.data.item.cost) * 0.93).toFixed(2))).toFixed(2)))
         amount.update().then(res => {
-          console.log('加入结算成功',res.data)
+          console.log('加入结算成功', res.data)
           wx.showToast({
             title: '金额已到账户',
             icon: 'success',
@@ -89,5 +95,5 @@ Page({
       }
     })
 
-  }
+  },
 })

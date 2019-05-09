@@ -84,9 +84,9 @@ Page({
     // }, err => {
     //   // err
     // })
-    wx.reLaunch({
-      url: '../driver',
-    })
+    setTimeout(function() {
+      wx.navigateBack({})
+    }, 200)
   },
   phonecall(e) {
     wx.makePhoneCall({
@@ -124,17 +124,16 @@ Page({
       var can_get = res.data.objects[0].can_get
       var q = new wx.BaaS.Query()
       //query.compare('created_at', '<', Date.parse(new Date()) / 1000)
-      if (can_get == false){
+      if (can_get == false) {
         wx.showToast({
           title: '未通过审核您现在还不能接单',
-          icon:'none',
-          duration:3000
+          icon: 'none',
+          duration: 3000
         })
-      }
-      else{
+      } else {
         q.compare('id', '=', e.target.id)
         Order.setQuery(q).find().then(res => {
-          if (!res.data.isget&&!res.data.cancel) {
+          if (!res.data.isget && !res.data.cancel) {
             order.set('isget', true)
             order.set('confirm_isget', true)
             order.set('driver_openid', userInfo.openid)
@@ -163,16 +162,19 @@ Page({
                 }).then(res => {
                   console.log("乘客提醒", res)
                 })
-                
-              }, err => { })
+
+              }, err => {})
               wx.showToast({
-                title: '已成功接单',
-                icon: 'success',
-                duration: 5000
-              }),
-              wx.reLaunch({
-                url: '../../order/order_coming/order_coming?id=' + this.data.id + "&&index=0",
-              })
+                  title: '已成功接单',
+                  icon: 'success',
+                  duration: 5000
+                }),
+                setTimeout(function() {
+                  wx.reLaunch({
+                    url: '../../order/order_coming/order_coming?id=' + this.data.id + "&&index=0",
+                  })
+                }, 200)
+
             }, err => {
               // err
             })

@@ -9,12 +9,15 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    orderId:null,
+    orderId: null,
     loadProgress: 0,
-    order_info:null,
+    order_info: null,
     isLoad: true
   },
-  onShow: function () {
+  onLoad(e) {
+
+  },
+  onShow: function() {
     var arr = getCurrentPages();
     if (arr[arr.length - 2].route == 'pages/pay_order/order_detail/order_detail') {
       //console.log(arr[arr.length - 2].data.orderId)
@@ -23,19 +26,36 @@ Page({
         orderId: arr[arr.length - 2].data.orderId,
         order_info: arr[arr.length - 2].data.order_info
       })
-    }
-    else {
+    } else {
       console.log(arr)
     }
+    let Order = new wx.BaaS.TableObject('Order')
+    Order.get(this.data.orderId).then(res => {
+      // success
+      if (res.data.trade_no) {
+        let order = Order.getWithoutData(this.data.orderId)
+        order.set('pay_status', true)
+        order.update().then(res => {
+          console.log(res.data)
+          setTimeout(function() {
+            wx.reLaunch({
+              url: '../../order/order?id=' + this.data.orderId,
+            })
+          }, 200)
+        })
+      } else {}
+    }, err => {
+      // err
+    })
   },
   back_mytrip(e) {
     setTimeout(() => {
       wx.reLaunch({
         url: '../../home/home',
       })
-    }, 100)
+    }, 200)
   },
-  pay_no(e){
+  pay_no(e) {
     this.back_mytrip();
   },
   pay(e) {
@@ -44,7 +64,7 @@ Page({
     let order = Order.getWithoutData(this.data.orderId) // 数据行 id
     //console.log(util.Formatunix(time / 1000))//时间戳转日期
     let params = {
-      totalCost: this.data.order_info.cost,//cost
+      totalCost: this.data.order_info.cost, //cost
       // totalCost: 0.01,
       merchandiseDescription: util.Formatunix(this.data.order_info.pre_time_str / 1000) + " " + this.data.order_info.startname + '=>' + this.data.order_info.endname + this.data.order_info.username,
       merchandiseSchemaID: 70227,
@@ -64,11 +84,11 @@ Page({
           icon: 'success',
           duration: 2000
         })
-        setTimeout(function () {
+        setTimeout(function() {
           wx.reLaunch({
             url: '../../order/order?id=' + res.data.id,
           })
-        }, 300)
+        }, 200)
       }, err => {
         // err
       })
@@ -79,34 +99,6 @@ Page({
         wx.showModal({
           title: '用户尚未授权',
         })
-        let Order = new wx.BaaS.TableObject('Order')
-        Order.get(this.data.orderId).then(res => {
-          // success
-          if (res.data.trade_no) {
-            let order = Order.getWithoutData(this.data.orderId)
-            order.set('pay_status', true)
-            order.update().then(res => {
-              console.log(res.data)
-              wx.reLaunch({
-                url: '../../order/order?id=' + this.data.orderId,
-              })
-            })
-          } else {
-            let order = Order.getWithoutData(this.data.orderId)
-            order.set('pay_status', false)
-            order.update().then(res => {
-              console.log(res.data)
-              setTimeout(function () {
-                wx.reLaunch({
-                  url: '../../home/home',
-                })
-              }, 300)
-            })
-
-          }
-        }, err => {
-          // err
-        })
       } else if (err.code === 607) {
         console.log('用户取消支付')
         order.set('pay_status', false)
@@ -116,15 +108,15 @@ Page({
             isLoad: true
           })
           wx.showToast({
-            title: '支付失败',
+            title: '取消支付',
             icon: 'none',
             duration: 2000
           })
-          setTimeout(function () {
+          setTimeout(function() {
             wx.reLaunch({
               url: '../../home/home',
             })
-          }, 300)
+          }, 200)
         }, err => {
           // err
         })
@@ -141,11 +133,11 @@ Page({
             icon: 'none',
             duration: 2000
           })
-          setTimeout(function () {
+          setTimeout(function() {
             wx.reLaunch({
               url: '../../home/home',
             })
-          }, 300)
+          }, 200)
         }, err => {
           // err
         })
@@ -153,7 +145,7 @@ Page({
       }
     })
   },
-  cancel(e){
+  cancel(e) {
     let Order = new wx.BaaS.TableObject("Order")
     let order = Order.getWithoutData(this.data.orderId) // 数据行 id
     order.set('cancel', true)
@@ -165,11 +157,11 @@ Page({
         icon: 'success',
         duration: 2000
       })
-      setTimeout(function () {
+      setTimeout(function() {
         wx.reLaunch({
           url: '../../home/home',
         })
-      }, 1000)
+      }, 200)
     }, err => {
       // err
     })
