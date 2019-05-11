@@ -1,0 +1,243 @@
+<!--pages/register/Driver_reg/Driver_reg.wxml-->
+
+
+<form bindsubmit='submit'>
+  <view wx:if="{{!pic}}">
+    <view class="cu-form-group margin-top">
+      <view class='title'>姓名</view>
+      <input placeholder="您的真实姓名" class='radius' name='name'></input>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>性别</view>
+      <switch class='switch-sex' bindchange="sexchange" checked></switch>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>车牌号</view>
+      <input placeholder="例:豫Axxx" class='radius' name='car_num'></input>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>手机号码</view>
+      <input placeholder="例:170xxxx1" class='radius' name='tel'></input>
+      <view class="cu-capsule radius">
+        <view class='cu-tag bg-blue '>
+          +86
+        </view>
+        <view class="cu-tag">
+          中国大陆
+        </view>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>司机类型</view>
+      <picker bindchange="TypeChange" value="{{typeindex}}" range="{{typepicker}}">
+        <view class="picker">
+          {{typeindex?typepicker[typeindex]:'司机类型'}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>车型</view>
+      <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+        <view class="picker">
+          {{index?picker[index]:'选择车型'}}
+        </view>
+      </picker>
+    </view>
+    <view wx:if="{{index != 4}}"></view>
+    <block wx:else>
+      <view class="cu-form-group">
+        <view class='title'>请输入您的车型</view>
+        <input placeholder="例:劳斯莱斯" class='radius' name='car_type'></input>
+      </view>
+    </block>
+
+    <view class="padding flex flex-wrap justify-center align-center">
+      <view class='padding-xl'>
+        <button form-type='submit' class='cu-btn round bg-blue shadow'> 下一步 </button>
+      </view>
+      <view class='padding-xl'>
+        <button form-type='reset' class='cu-btn round  bg-white shadow'> 重置</button>
+      </view>
+    </view>
+
+  </view>
+
+  <view wx:if="{{pic}}">
+    <view class="cu-form-group margin-top">
+      <view class='content padding-sm'>
+        <view>
+          <text></text>身份证</view>
+        <view class='text-gray text-sm'>
+          <text></text>正面</view>
+      </view>
+      <view class="grid col-3 grid-square flex-sub">
+        <view wx:if="{{ID_pic_z}}">
+          <view class="padding-xs bg-img" bindtap="vel" id='ID_pic_z' style="background-image:url({{ID_pic_z}});width:100px;height:100px;">
+            <view class="cu-tag bg-red">
+              <text class='icon-close' catchtap='del' id='ID_pic_z'></text>
+            </view>
+          </view>
+        </view>
+        <view class="padding-xs solids" wx:if="{{!ID_pic_z}}">
+          <text class='icon-cameraadd' bindtap='ID_pic_z'></text>
+        </view>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class='content padding-sm'>
+        <view>
+          <text></text>身份证</view>
+        <view class='text-gray text-sm'>
+          <text></text>反面</view>
+      </view>
+      <view class="grid col-3 grid-square flex-sub">
+        <view wx:if="{{ID_pic_b}}">
+          <view class="padding-xs bg-img" bindtap="vel" id='ID_pic_b' style="background-image:url({{ID_pic_b}});width:100px;height:100px;">
+            <view class="cu-tag bg-red">
+              <text class='icon-close' catchtap='del' id='ID_pic_b'></text>
+            </view>
+          </view>
+        </view>
+        <view class="padding-xs solids" wx:if="{{!ID_pic_b}}">
+          <text class='icon-cameraadd' bindtap='ID_pic_b'></text>
+        </view>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class='content padding-sm'>
+        <view>
+          <text></text>驾驶证</view>
+        <view class='text-gray text-sm'>
+          <text></text>正页</view>
+      </view>
+      <view class="grid col-3 grid-square flex-sub">
+        <view wx:if="{{Driver_lic_z}}">
+          <view class="padding-xs bg-img" bindtap="vel" id='Driver_lic_z' style="background-image:url({{Driver_lic_z}});width:100px;height:100px;">
+            <view class="cu-tag bg-red">
+              <text class='icon-close' catchtap='del' id='Driver_lic_z'></text>
+            </view>
+          </view>
+        </view>
+        <view class="padding-xs solids" wx:if="{{!Driver_lic_z}}">
+          <text class='icon-cameraadd' bindtap='Driver_lic_z'></text>
+        </view>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class='content padding-sm'>
+        <view>
+          <text></text>驾驶证</view>
+        <view class='text-gray text-sm'>
+          <text></text>副页</view>
+      </view>
+      <view class="grid col-3 grid-square flex-sub">
+        <view wx:if="{{Driver_lic_b}}">
+          <view class="padding-xs bg-img" bindtap="vel" id='Driver_lic_b' style="background-image:url({{Driver_lic_b}});width:100px;height:100px;">
+            <view class="cu-tag bg-red">
+              <text class='icon-close' catchtap='del' id='Driver_lic_b'></text>
+            </view>
+          </view>
+        </view>
+        <view class="padding-xs solids" wx:if="{{!Driver_lic_b}}">
+          <text class='icon-cameraadd' bindtap='Driver_lic_b'></text>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-form-group">
+      <view class='content padding-sm'>
+        <view>
+          <text></text>行车证</view>
+        <view class='text-gray text-sm'>
+          <text></text>正页</view>
+      </view>
+      <view class="grid col-3 grid-square flex-sub">
+        <view wx:if="{{Vechicle_lic_z}}">
+          <view class="padding-xs bg-img" bindtap="vel" id='Vechicle_lic_z' style="background-image:url({{Vechicle_lic_z}});width:100px;height:100px;">
+            <view class="cu-tag bg-red">
+              <text class='icon-close' catchtap='del' id='Vechicle_lic_z'></text>
+            </view>
+          </view>
+        </view>
+        <view class="padding-xs solids" wx:if="{{!Vechicle_lic_z}}">
+          <text class='icon-cameraadd' bindtap='Vechicle_lic_z'></text>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-form-group">
+      <view class='content padding-sm'>
+        <view>
+          <text></text>行车证</view>
+        <view class='text-gray text-sm'>
+          <text></text>副页</view>
+      </view>
+      <view class="grid col-3 grid-square flex-sub">
+        <view wx:if="{{Vechicle_lic_b}}">
+          <view class="padding-xs bg-img" bindtap="vel" id='Vechicle_lic_b' style="background-image:url({{Vechicle_lic_b}});width:100px;height:100px;">
+            <view class="cu-tag bg-red">
+              <text class='icon-close' catchtap='del' id='Vechicle_lic_b'></text>
+            </view>
+          </view>
+        </view>
+        <view class="padding-xs solids" wx:if="{{!Vechicle_lic_b}}">
+          <text class='icon-cameraadd' bindtap='Vechicle_lic_b'></text>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-form-group">
+      <view class='content padding-sm'>
+        <view>
+          <text></text>车辆照</view>
+        <view class='text-gray text-sm'>
+          <text>正面</text>
+        </view>
+      </view>
+      <view class="grid col-3 grid-square flex-sub">
+        <view wx:if="{{Vechicle_pic_z}}">
+          <view class="padding-xs bg-img" bindtap="vel" id='Vechicle_pic_z' style="background-image:url({{Vechicle_pic_z}});width:100px;height:100px;">
+            <view class="cu-tag bg-red">
+              <text class='icon-close' catchtap='del' id='Vechicle_pic_z'></text>
+            </view>
+          </view>
+        </view>
+        <view class="padding-xs solids" wx:if="{{!Vechicle_pic_z}}">
+          <text class='icon-cameraadd' bindtap='Vechicle_pic_z'></text>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-form-group">
+      <view class='content padding-sm'>
+        <view>
+          <text></text>车辆照</view>
+        <view class='text-gray text-sm'>
+          <text>背面</text>
+        </view>
+      </view>
+      <view class="grid col-3 grid-square flex-sub">
+        <view wx:if="{{Vechicle_pic_b}}">
+          <view class="padding-xs bg-img" bindtap="vel" id='Vechicle_pic_b' style="background-image:url({{Vechicle_pic_b}});width:100px;height:100px;">
+            <view class="cu-tag bg-red">
+              <text class='icon-close' catchtap='del' id='Vechicle_pic_b'></text>
+            </view>
+          </view>
+        </view>
+        <view class="padding-xs solids" wx:if="{{!Vechicle_pic_b}}">
+          <text class='icon-cameraadd' bindtap='Vechicle_pic_b'></text>
+        </view>
+      </view>
+    </view>
+    <view class="padding flex flex-wrap justify-center align-center margin-top">
+      <button class='cu-btn round bg-cyan shadow' bindtap='com'>完成</button>
+    </view>
+  </view>
+
+</form>
+
+
+<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
+  <view class='load-progress-bar bg-blue' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+  <view class='load-progress-spinner text-blue'></view>
+</view>

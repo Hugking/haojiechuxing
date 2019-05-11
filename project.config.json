@@ -9,17 +9,18 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
+		"autoAudits": true,
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.4",
 	"appid": "wx37c9d625eddac654",
-	"projectname": "%E8%B1%AA%E6%9D%B0%E5%87%BA%E8%A1%8C1.0.1",
+	"projectname": "%E8%B1%AA%E6%9D%B0%E5%87%BA%E8%A1%8C1.1.5.0",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"cloudfunctionRoot": "cloud-functions/",
+	"miniprogramRoot": "src/",
+	"qcloudRoot": "svr/",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
